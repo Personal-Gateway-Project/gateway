@@ -9,11 +9,11 @@
 - Failed: cat without a file hung (fixed with Ctrl+C); cls and ipconfig do not exist (use clear, ip -br a); poweroff not found as a normal user (used su -); sudo was not installed (installed it, added mustafa to the sudo group).
 - Note: snapshot clean-base was taken before installing sudo, so clones have no sudo.
 - Acceptance: sources show trixie, trixie-updates, trixie-security; ssh -p 2222 works; clean-base exists.
-- Actual hours: about 4 (includes download waiting)
+- Actual hours: about 5.5 (includes download waiting)
 
 ### 2026-10-20 · Task 3: GitHub basics and pull requests
 - Tried: organization Personal-Gateway-Project, public repo gateway, SSH key, ruleset protect-main, PR template.
-- Worked: direct push to main is rejected (GH013); PRs merge only through pull requests.
+- Worked: direct push to main is rejected (GH013); PRs merge through the admin bypass.
 - Failed: template file name typo (templete) hid the template; fixed with git mv. Nested code fences broke the template when copied.
 - Acceptance: push to main rejected; new PR shows the template automatically.
 - Actual hours: about 5
@@ -29,13 +29,13 @@
 - Found: clean-base has no sudo; used su -. install.sh must not assume sudo exists.
 - Found: clients get 169.254.x.x (link-local) because DHCP is not served yet; expected until task 9.
 - Acceptance: both boot; hostnamectl shows client1 and client2; machine-ids differ (ee3793b9 / 1912e491); ip -br a shows only enp0s3.
-- Actual hours: about 1.5
+- Actual hours: about 2
 
-### Hours summary, week 1 (Oct 19 to 25)
-- Task 1: about 4 (planned 3)
+### Hours summary, week 1 (Oct 18 to 25)
+- Task 1: about 5.5 (planned 3)
 - Task 3: about 6.5 including reviews (planned 2)
-- Task 4: about 1.5 (planned 3.5)
-- Total so far: about 12 of the 12 planned for week 1
+- Task 4: about 2 (planned 3.5)
+- Total so far: about 14 of the 12 planned for week 1
 - Remaining this week: Task 5 (repository skeleton and CI), Task 6 (board decision)
 
 ## 2026-10-22 · Naba · Task 1 and Task 3
