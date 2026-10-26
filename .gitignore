@@ -5,4 +5,6 @@ __pycache__/
 .venv/
 .pytest_cache/
 .ruff_cache/
-EOF
+*.save
+*.db-wal
+*.db-shm

@@ -9,4 +9,3 @@ One entry per decision. Newest at the bottom.
 - Decision: what we chose
 - Alternatives: what we rejected and why
 - Consequences: what changes because of this
-EOF
