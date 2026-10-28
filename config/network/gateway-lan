@@ -1,0 +1,5 @@
+# Home network side of the gateway (LAN). Static, so clients always find the gateway.
+# No "gateway" line here: the only way out is the WAN interface.
+auto enp0s8
+iface enp0s8 inet static
+    address 192.168.50.1/24

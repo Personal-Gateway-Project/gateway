@@ -10,3 +10,6 @@ fi
 install -d -m 0755 /etc/gateway
 
 # Rule: every task that adds a config file adds its install line below.
+
+# Task 7: static LAN address on the home side
+install -m 0644 config/network/gateway-lan /etc/network/interfaces.d/gateway-lan
