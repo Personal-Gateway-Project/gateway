@@ -13,3 +13,7 @@ install -d -m 0755 /etc/gateway
 
 # Task 7: static LAN address on the home side
 install -m 0644 config/network/gateway-lan /etc/network/interfaces.d/gateway-lan
+
+# Task 9: DHCP on the LAN side, with a lease logger
+install -m 0644 config/dnsmasq/dhcp.conf /etc/dnsmasq.d/dhcp.conf
+install -m 0755 scripts/dhcp-lease-logger.sh /usr/local/bin/dhcp-lease-logger.sh
