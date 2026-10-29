@@ -38,11 +38,36 @@
 - Total so far: about 14 of the 12 planned for week 1
 - Remaining this week: Task 5 (repository skeleton and CI), Task 6 (board decision)
 
-## 2026-10-22 · Naba · Task 1 and Task 3
-- Tried: Debian 13.7 VM with SSH and sudo, clean-base snapshot; GitHub account Naba-Anas, git config with the private noreply
-email, ed25519 SSH key, cloned the repo.
-- Worked: ssh -T git@github.com authenticated; repo cloned and git status clean.
-- Failed: on install I pressed Enter before unticking GNOME; fixed by restarting the install. Setting a root password skipped
-sudo; fixed with apt install sudo and usermod -aG sudo naba.
-- Acceptance: this PR shows the template automatically.
-- Hours: Task 1 about 6 h, Task 3 about 3 h.
+## Naba
+
+### 2026-10-19 to 22 · Task 1: Gateway VM
+- Tried: Debian 13.7 VM with SSH and sudo, clean-base snapshot.
+- Failed: pressed Enter before unticking GNOME; restarted the install. A root password skipped sudo; fixed with apt install sudo and usermod -aG sudo naba.
+- Acceptance: passed.
+- Actual hours: about 6 (planned 3)
+
+### 2026-10-21 to 23 · Task 3: GitHub basics and pull requests
+- Done: GitHub account with private noreply email, ed25519 SSH key, cloned the repo, PR #5 merged, reviewed PR #4.
+- Acceptance: push to main rejected (GH013); the PR template appears.
+- Actual hours: about 3 (planned 2)
+
+### 2026-10-23 to 25 · Task 4: Client VMs
+- Done: client1 and client2 as linked clones with XFCE, lightdm and firefox-esr, plus dnsutils, curl, netcat-openbsd and iperf3; new hostname and machine-id each.
+- Failed: Debian 13 has no dhclient, so installed isc-dhcp-client (task 29 needs it). systemd-machine-id-setup copied the old ID from D-Bus; fixed by deleting both machine-id files first.
+- Acceptance: both boot to XFCE, Firefox opens, ip -br a shows one interface on gwlan.
+- Actual hours: about 3 (planned 3.5)
+
+### 2026-10-26 · Task 5 review (PR #10)
+- Done: ran the acceptance test on my VM (grep, git check-ignore, bash -n, nft -c), all passed; found EOF leftovers in 3 files, fixed by Abdelmoneim; approved.
+- Actual hours: about 2 (planned 1.25)
+
+### 2026-10-27 · Task 6: Board decision (PR #11)
+- Done: ADR-001 (Raspberry Pi 3 Model B) in docs/decisions.md; AI_GUIDE updated to Pi 3 Model B and up to 3 users.
+- Found: VM DNS failed after the laptop changed network (resolv.conf kept the old address); fixed by restarting the VM. The VM clock was 15 h behind after "Save the machine state"; use poweroff instead.
+- Acceptance: ADR merged; fallback (Mustafa's laptop, ROLE=laptop) documented.
+- Actual hours: about 1 (planned 2)
+
+### 2026-10-28 · Task 2: Linux basics (week 2)
+- Done: final exercise on the gateway VM, screenshot on PR #12; reviewed PR #7.
+- Found: journalctl needs sudo, because our users are not in the adm group.
+- Actual hours: about 3 (planned 2)
