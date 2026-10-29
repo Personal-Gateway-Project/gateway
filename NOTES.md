@@ -7,9 +7,8 @@
 - Acceptance: push to main rejected; new PR shows the template automatically.
 
 
-## 2026-10-29 - Abdelmoneim - Tasks 1, 3, 4, 5
-
-- Task 1 (Repo & Structure): Verified repository layout, SSH access, and workspace setup. (Hours: 2)
-- Task 3 (Acceptance Tests & Workflow): Reviewed PR rulesets and test workflows. (Hours: 2.5)
-- Task 4 (Documentation & Peer Reviews): Completed peer code reviews and updated week 1 documentation. (Hours: 3)
-- Task 5 (Network Planning): Reviewed static LAN IP configurations and network gateway rules. (Hours: 2)
+## 2026-10-29 · Abdelmoneim · Tasks 1, 3, 4, 5
+- Task 1 (Gateway machine): Debian 13 without GUI in VirtualBox, SSH and sudo, clean-base snapshot. Acceptance: apt sources show trixie, SSH login works. Hours: 2
+- Task 3 (GitHub and PR flow): direct push to main rejected, PR opened and the template appeared. Failed: refspec error on push, fixed with git checkout -b. Hours: 2.5
+- Task 4 (Client machines): client1 and client2 as linked clones of clean-base with XFCE, on gwlan, both got 192.168.50.x from the gateway DHCP. Hours: 3
+- Task 5 (Repository structure and CI): layout, CONTRACT.md, AI_GUIDE.md, .gitignore, secrets.env.example, install.sh skeleton and CI. First PR (#9) had conflicts, rebuilt as #10 which is merged. Hours: 2
