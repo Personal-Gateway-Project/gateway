@@ -46,3 +46,41 @@ email, ed25519 SSH key, cloned the repo.
 sudo; fixed with apt install sudo and usermod -aG sudo naba.
 - Acceptance: this PR shows the template automatically.
 - Hours: Task 1 about 6 h, Task 3 about 3 h.
+
+
+## Abdelmoneim
+
+### 2026-10-18 · Task 1: Gateway VM
+- Tried: Debian 13 without a GUI in a VirtualBox VM named gateway, SSH access, snapshot clean-base.
+- Worked: Debian 13 installed; VS Code connects over Remote-SSH; two adapters, NAT (enp0s3) and Internal Network gwlan (enp0s8).
+- Failed: nothing blocking.
+- Acceptance: sources show trixie, trixie-updates, trixie-security; SSH login works; clean-base exists.
+- Actual hours: about 3.5
+
+### 2026-10-23 · Task 3: GitHub basics and pull requests
+- Tried: cloned the team repo, followed the branch naming try/<name>/<slice>, pushed to main, opened a PR.
+- Worked: direct push to main is rejected; a new PR shows the template automatically.
+- Failed: git push gave a refspec error because the branch did not exist locally (fixed with git checkout -b). My test PR #6 got changes requested (app.py outside web/portal, debug=True with host 0.0.0.0, port 5000 instead of 8080, Flask not pinned), so I closed it; Flask belongs to Task 25.
+- Acceptance: push to main rejected; new PR shows the template automatically.
+- Actual hours: about 4
+
+### 2026-10-24 · Task 4: Client VMs
+- Tried: client1 and client2 as linked clones of clean-base, XFCE and a web browser, adapter on gwlan.
+- Worked: both boot to XFCE and the browser opens; ip -br a shows enp0s3 UP with 192.168.50.84/24 on client1 and 192.168.50.74/24 on client2, from the gateway DHCP.
+- Failed: my first notes PR (#8) had conflicts after the NOTES.md format changed, so I closed it and redid the notes here.
+- Acceptance: both clients boot to XFCE, the browser opens, ip -br a shows one interface on gwlan.
+- Actual hours: about 3.5
+
+### 2026-10-25 · Task 5: Repository structure and initial CI
+- Tried: repository layout, CONTRACT.md, AI_GUIDE.md, .gitignore, secrets.env.example, install.sh skeleton, ADR template and a CI workflow (shellcheck, ruff, pytest, nft -c -f).
+- Worked: ci / checks passed in 23 seconds; PR #10 was approved and merged.
+- Failed: the first PR (#9) had conflicts and an unrelated test commit, so I rebuilt the branch from origin/main with one clean commit. A follow-up commit (ae1950e) removed leftover EOF lines, fixed markdown tables and updated .gitignore.
+- Acceptance: grep secrets.env .gitignore prints the line; secrets.env is ignored and secrets.env.example is not; CI is green.
+- Actual hours: about 5
+
+### Hours summary, week 1 (Oct 19 to 25)
+- Task 1: about 2 (planned 3)
+- Task 3: about 2.5 (planned 2)
+- Task 4: about 3 (planned 3.5)
+- Task 5: about 2 (planned 5)
+- Total: about 9.5 of the 12 planned for week 1
