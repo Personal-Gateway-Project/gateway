@@ -71,3 +71,9 @@
 - Done: final exercise on the gateway VM, screenshot on PR #12; reviewed PR #7.
 - Found: journalctl needs sudo, because our users are not in the adm group.
 - Actual hours: about 3 (planned 2)
+
+### 2026-10-31 · Task 8: Forwarding and NAT
+- Done: config/sysctl/90-gateway.conf (net.ipv4.ip_forward = 1) and config/nftables/nftables.conf (table inet gateway, postrouting chain, masquerade on enp0s3); install.sh copies both and enables the nftables service.
+- Found: sysctl is in /usr/sbin, so a normal user gets "command not found"; use sudo sysctl. The nftables service is disabled on a fresh Debian 13, so install.sh enables it.
+- Acceptance: after sudo reboot, sudo sysctl net.ipv4.ip_forward returns 1 and the gateway table is loaded; from client1, ping -c 3 1.1.1.1 and ping -c 3 google.com have 0% packet loss.
+- Actual hours: about 2 (planned 2)
