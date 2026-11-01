@@ -1,0 +1,14 @@
+# Task 10: rotate the DNS query log every day and keep 7 days.
+# The log is a browsing history, so only dnsmasq and the adm group read it.
+/var/log/dnsmasq.log {
+    daily
+    rotate 7
+    missingok
+    notifempty
+    compress
+    delaycompress
+    create 0640 dnsmasq adm
+    postrotate
+        systemctl kill --kill-whom=main --signal=USR2 dnsmasq.service
+    endscript
+}

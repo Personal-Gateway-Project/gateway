@@ -22,3 +22,10 @@ install -m 0755 scripts/dhcp-lease-logger.sh /usr/local/bin/dhcp-lease-logger.sh
 install -m 0644 config/sysctl/90-gateway.conf /etc/sysctl.d/90-gateway.conf
 install -m 0644 config/nftables/nftables.conf /etc/nftables.conf
 systemctl enable nftables
+
+# Task 10: DNS query log (0640, dnsmasq:adm) and its daily rotation
+install -m 0644 config/dnsmasq/dns.conf /etc/dnsmasq.d/dns.conf
+install -m 0644 config/logrotate/dnsmasq /etc/logrotate.d/dnsmasq
+touch /var/log/dnsmasq.log
+chown dnsmasq:adm /var/log/dnsmasq.log
+chmod 0640 /var/log/dnsmasq.log
