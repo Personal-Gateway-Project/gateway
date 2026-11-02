@@ -38,6 +38,16 @@
 - Total so far: about 14 of the 12 planned for week 1
 - Remaining this week: Task 5 (repository skeleton and CI), Task 6 (board decision)
 
+### 2026-11-01 · Task 10: DNS query log and logrotate
+- Done: config/dnsmasq/dns.conf (log-queries=extra, log-facility=/var/log/dnsmasq.log, max-ttl=300) and config/logrotate/dnsmasq (daily, keep 7, create 0640 dnsmasq adm, USR2 to dnsmasq after rotation). install.sh copies both and creates the log file as 0640 dnsmasq:adm. dhcp.conf from Task 9 is not changed.
+- Decisions for reviewers:
+  - Log path /var/log/dnsmasq.log. It is not in CONTRACT.md, and the DNS watcher will read it, so it should go into the contract.
+  - Owner dnsmasq: dnsmasq drops root after start, so it must own the file to reopen it after rotation. Group adm: the Debian group for reading logs; the gateway service user joins it when the DNS watcher is built.
+  - Keep 7 days. 0 keeps only today: best for privacy, but a complaint about yesterday cannot be checked. 3 covers yesterday and short H3 experiments. 7 covers a week of debugging and longer experiments. Admin reports do not need this log; they come from usage_daily. Changing it is one line.
+- Found: with log-facility, all dnsmasq messages (DHCP too) go to the file, so journalctl -u dnsmasq no longer shows them. dig does not read /etc/hosts; the browser does. A client that asks 8.8.8.8 directly is not logged (a later task redirects DNS). With www.youtube.com in /etc/hosts, it was not logged, but googlevideo.com was (104 queries in one minute of video), so most YouTube traffic is still seen.
+- Acceptance: from client1, dig google.com shows SERVER: 192.168.50.1; the query is in /var/log/dnsmasq.log; stat -c %a gives 640; logrotate -d has no errors. Also: microsoft.com has TTL 1396 from 8.8.8.8 and 300 from the gateway; after logrotate -f, the new file is 0640 dnsmasq:adm and new queries go to it; all of this survives a reboot. After install.sh, dnsmasq needs a restart or a reboot.
+- Actual hours: about 5 (planned 2.5)
+
 ## Naba
 
 ### 2026-10-19 to 22 · Task 1: Gateway VM
